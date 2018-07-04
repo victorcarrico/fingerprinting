@@ -1,3 +1,5 @@
+# flake8: noqa
+
 import numpy as np
 from math import log10
 from PyRadioLoc.Enums import LeeAreaType
@@ -72,9 +74,9 @@ class Cost231Model(object):
     """COST 231- Cost-Waldrosch-Ikegami Model"""
     def __init__(self, freq):
         self.freq = freq
-        self.txH = 50.0
+        self.txH = 80.0
         self.rxH = 1.5
-        self.ws = 15.0
+        self.ws = 1.0
         self.bs =0.5
         self.hr =3.0
         self.areaKind = AreaKind.Urban
@@ -87,8 +89,8 @@ class Cost231Model(object):
         f, d, hm, hb,hr,ws,bs = self.freq, dist, self.rxH, self.txH,self.hr,self.ws,self.bs
         deltaH = hm/hb #relaction between heighths
         Lbsh= 18*np.log10(1+deltaH) # Loss due to difference of heights
-        Ka=54.0  #Coefficient of proximity Buildings
-        Kd=18.0  #Coeficiente of proximidade Edifica??es
+        Ka=0.0  #Coefficient of proximity Buildings
+        Kd=1.0  #Coeficiente of proximidade Edifica??es
         Kf=4.0  #Coeficient of environment(urban or not)
         #Coeficient's calculate
         if (hr > hb):
